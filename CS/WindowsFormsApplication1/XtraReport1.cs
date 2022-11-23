@@ -14,11 +14,11 @@ namespace WindowsFormsApplication1 {
             Convert.ToInt32(Math.Round(e.Value));
             switch (e.Side) {
                 case DevExpress.XtraPrinting.MarginSide.Left:
-                    Margins = new System.Drawing.Printing.Margins((int)e.Value, Margins.Right, Margins.Top, Margins.Bottom);
+                    Margins = new DevExpress.Drawing.DXMargins(e.Value, Margins.Right, Margins.Top, Margins.Bottom);
                     CreateDocument();
                     break;
                 case DevExpress.XtraPrinting.MarginSide.Right:
-                    Margins = new System.Drawing.Printing.Margins(Margins.Left, (int)e.Value, Margins.Top, Margins.Bottom);
+                    Margins = new DevExpress.Drawing.DXMargins(Margins.Left, e.Value, Margins.Top, Margins.Bottom);
                     CreateDocument();
                     break;
                 case DevExpress.XtraPrinting.MarginSide.All:
@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1 {
             XtraPageSettingsBase pageSettings = ((PrintingSystemBase)sender).PageSettings;
             PaperKind = pageSettings.PaperKind;
             Landscape = pageSettings.Landscape;
-            Margins = new System.Drawing.Printing.Margins(pageSettings.LeftMargin, pageSettings.RightMargin, pageSettings.TopMargin, pageSettings.BottomMargin);
+            Margins = new DevExpress.Drawing.DXMargins(pageSettings.LeftMargin, pageSettings.RightMargin, pageSettings.TopMargin, pageSettings.BottomMargin);
             CreateDocument();
         }
         private void AdjustControls() {
@@ -44,7 +44,7 @@ namespace WindowsFormsApplication1 {
             xrLabel2.WidthF = newWidth;
         }
 
-        private void XtraReport1_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e) {
+        private void XtraReport1_BeforePrint(object sender, System.ComponentModel.CancelEventArgs e) {
             AdjustControls();
         }
     }

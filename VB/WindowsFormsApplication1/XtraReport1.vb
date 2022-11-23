@@ -16,10 +16,10 @@ Namespace WindowsFormsApplication1
 			Convert.ToInt32(Math.Round(e.Value))
 			Select Case e.Side
 				Case DevExpress.XtraPrinting.MarginSide.Left
-					Margins = New System.Drawing.Printing.Margins(CInt(Math.Truncate(e.Value)), Margins.Right, Margins.Top, Margins.Bottom)
+					Margins = New DevExpress.Drawing.DXMargins(e.Value, Margins.Right, Margins.Top, Margins.Bottom)
 					CreateDocument()
 				Case DevExpress.XtraPrinting.MarginSide.Right
-					Margins = New System.Drawing.Printing.Margins(Margins.Left, CInt(Math.Truncate(e.Value)), Margins.Top, Margins.Bottom)
+					Margins = New DevExpress.Drawing.DXMargins(Margins.Left, e.Value, Margins.Top, Margins.Bottom)
 					CreateDocument()
 				Case DevExpress.XtraPrinting.MarginSide.All
 					Margins = (TryCast(sender, DevExpress.XtraPrinting.PrintingSystemBase)).PageSettings.Margins
@@ -31,7 +31,7 @@ Namespace WindowsFormsApplication1
 			Dim pageSettings As XtraPageSettingsBase = DirectCast(sender, PrintingSystemBase).PageSettings
 			PaperKind = pageSettings.PaperKind
 			Landscape = pageSettings.Landscape
-			Margins = New System.Drawing.Printing.Margins(pageSettings.LeftMargin, pageSettings.RightMargin, pageSettings.TopMargin, pageSettings.BottomMargin)
+			Margins = New DevExpress.Drawing.DXMargins(pageSettings.LeftMargin, pageSettings.RightMargin, pageSettings.TopMargin, pageSettings.BottomMargin)
 			CreateDocument()
 		End Sub
 		Private Sub AdjustControls()
@@ -42,7 +42,7 @@ Namespace WindowsFormsApplication1
 			xrLabel2.WidthF = newWidth
 		End Sub
 
-		Private Sub XtraReport1_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles MyBase.BeforePrint
+		Private Sub XtraReport1_BeforePrint(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles MyBase.BeforePrint
 			AdjustControls()
 		End Sub
 	End Class
