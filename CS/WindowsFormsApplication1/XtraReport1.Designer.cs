@@ -126,7 +126,7 @@
             this.PageFooter});
             this.PageHeight = 1169;
             this.PageWidth = 827;
-            this.PaperKind = System.Drawing.Printing.PaperKind.A4;
+            this.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A4;
             this.Version = "15.1";
             this.BeforePrint += new DevExpress.XtraReports.UI.BeforePrintEventHandler(this.XtraReport1_BeforePrint);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();

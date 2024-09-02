@@ -109,7 +109,7 @@
 			Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() { Me.Detail, Me.TopMargin, Me.BottomMargin, Me.PageHeader, Me.PageFooter})
 			Me.PageHeight = 1169
 			Me.PageWidth = 827
-			Me.PaperKind = System.Drawing.Printing.PaperKind.A4
+			Me.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A4
 			Me.Version = "15.1"
 '			Me.BeforePrint += New System.Drawing.Printing.PrintEventHandler(Me.XtraReport1_BeforePrint)
 			DirectCast(Me, System.ComponentModel.ISupportInitialize).EndInit()
